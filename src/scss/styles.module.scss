@@ -448,12 +448,22 @@ body {
     }
 
     &__buy {
+      display: flex;
+      justify-content: end;
       text-align: right;
       align-content: end;
-      cursor: pointer;
-      &:hover{
-        color: #FFA542;
+
+
+
+      &__text{
+        width: 65px;
+        justify-self: flex-end;
+        cursor: pointer;
+        &:hover{
+          color: #FFA542;
+        }
       }
     }
   }
 }
+
