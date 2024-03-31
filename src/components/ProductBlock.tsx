@@ -1,5 +1,4 @@
 import { FC } from "react";
-// import styles from "../scss/ProductBlock.module.scss";
 import { ProductProps } from "../pages/Home.tsx";
 import styles from "../scss/styles.module.scss";
 import { useDispatch } from "react-redux";
@@ -15,7 +14,6 @@ export const ProductBlock: FC<ProductProps> = ({
     wireless,
 }) => {
     const dispatch = useDispatch();
-
     const addProduct: () => void = () => {
         const item: CartItemProps = {
             id,
@@ -64,11 +62,13 @@ export const ProductBlock: FC<ProductProps> = ({
                         {rate}
                     </div>
 
-                    <div
-                        className={styles.product__info__buy}
-                        onClick={addProduct}
-                    >
-                        Купить
+                    <div className={styles.product__info__buy}>
+                        <div
+                            className={styles.product__info__buy__text}
+                            onClick={addProduct}
+                        >
+                            Купить
+                        </div>
                     </div>
                 </div>
             </div>
