@@ -14,26 +14,23 @@ html, body {
 body {
   background-color: #EAEAEA;
   font-family: Montserrat;
-  height: 100%;
 }
 
 .root {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin: 0 20px 0 20px;
+
 }
+
 
 .header {
   max-width: 1110px;
-  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 
   &__title {
     font-weight: 700;
@@ -46,52 +43,17 @@ body {
   }
 
   &__icons {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    div{
+    img{
       margin-left: 15px;
     }
-
-    &__heartLogo{
-      position: relative;
-
-    }
-
-
-    &__heartLogo, &__cartLogo{
-      position: relative;
-      cursor: pointer;
-
-      &:hover {
-        opacity: 0.73;
-      }
-
-      &__totalCount{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: -6px;
-        left: 1px;
-        width: 18px;
-        height: 18px;
-        background-color: #FFA542;
-        color: #ffffff;
-        font-size: 15px;
-        border-radius: 50%;
-      }
-    }
-
   }
 
 }
 
 .home {
-  min-height: calc(100vh - 196px); // чтобы футер был прижат к низу
-  margin: 0 20px 0 20px;
+  max-width: 1110px;
+  margin: 0 auto 0 auto;
+
   &__headphones {
     color: #838383;
     margin: 28px 0 20px 0;
@@ -104,75 +66,42 @@ body {
     gap: 30px;
     padding: 0;
     margin: 0;
-
-    @media (max-width: 1149px) {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @media (max-width: 765px) {
-      grid-template-columns: 1fr ;
-    }
   }
 
 }
 
 .cart {
-  min-height: calc(100vh - 229px);
-  display: grid;
+  display: flex;
   max-width: 1110px;
-  width: 100%;
-  grid-template-columns: minmax(350px, 633px)minmax(100px, auto);
-
-  @media (max-width: 1060px){
-    grid-template-columns: minmax(350px, 633px);
-    max-width: 633px;
-
-  }
-
-  &__emptyCart {
-    margin-top: 20px;
-    color: #777777;
-  }
+  flex-wrap: nowrap;
+  margin: 0 auto 0 auto;
+  flex: 1 1 auto;
 
   &__items {
+    flex: 1;
     padding: 0;
-    max-width: 633px;
-    width: 100%;
-
     li {
       list-style: none;
+
     }
   }
 
   &__purchaseBlock {
-    justify-self: end;
-
+    margin-left: 127px;
     display: flex;
     width: 350px;
-
     height: 120px;
     background-color: white;
     border-radius: 30px;
     flex-direction: column;
     justify-content: space-between;
 
-    font-weight: 600;
-    font-size: 15px;
-    @media (max-width: 1060px){
-      justify-self: center;
-    }
-
     button {
-      font-size: 17px;
       background-color: black;
       color: white;
       border-radius: 20px;
-      max-width: 350px;
+      width: 350px;
       height: 65px;
-      cursor: pointer;
-      &:hover {
-        opacity: 0.8;
-      }
     }
     &__cost {
       display: flex;
@@ -187,8 +116,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-
+  max-width: 633px;
+  min-width: 350px;
   height: 218px;
   background: white;
 
@@ -231,13 +160,6 @@ body {
     width: 118px;
     height: 30px;
 
-    img {
-      cursor: pointer;
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-
     &__quantity {
       font-size: 16px;
     }
@@ -247,10 +169,6 @@ body {
   &__deleteIcon {
     margin: 18px 28px 0 0;
     align-self: flex-end;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
   }
 
   &__totalPrice {
@@ -265,129 +183,56 @@ body {
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 1110px;
-  width: 100%;
+  display: flex;
+
+
+  justify-content: space-between;
+  width: 1050px;
   background-color: white;
-  height: 149px;
+  height: 51px;
   border-radius:  30px 30px 0 0;
-  margin-top: 20px;
-
-  @media (max-width: 655px) {
-    grid-template-columns: repeat(2, 1fr);
-
-    grid-template-rows: auto auto;
-    height: 300px;
-    padding: 15px;
-  }
+  margin: 20px auto 0 auto;
+  padding: 29px 29px 29px 29px;
 
   &__logo {
-    margin: 29px 0 0 29px;
     font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    @media (max-width: 655px) {
-      justify-self: center;
-      margin-left: 0;
-    }
-
-    width: 85px;
-    height: 30px;
-    &:hover{
-      color: #FFA542;
-    }
+    font-weight: 700;
   }
+  &__info {
+    width: 427px;
+    height: 83px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    justify-content: space-between;
+     &__optionsList {
+       padding: 0;
+       margin: 0 30px 0 0;
+       line-height: 30px;
 
-  &__optionsList {
-     margin-top: 29px;
-     padding: 0;
-     line-height: 30px;
-     justify-self: center;
-    width: 121px;
-
-
-    @media (max-width: 655px) {
-      justify-self: center;
-    }
-
-     &__buy {
-
-     }
-     li {
-
-       list-style: none;
-       cursor: pointer;
-       &:hover {
-         text-decoration: underline;
+       li {
+         list-style: none;
        }
      }
-  }
-
-  &__serviceAndLang{
-    margin: 29px 0 29px 0;
-    justify-self: center;
-    white-space: nowrap;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 8px;
 
     &__service {
       margin: 0;
-      cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
     }
 
     &__lang {
-      justify-self: flex-end;
       width: 111px;
       display: flex;
       justify-content: space-between;
-      font-weight: 500;
-
-      &__rus {
-
-        color: #FFA542;
-      }
-
-      &__rus, &__eng {
-
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
     }
   }
+
   &__social {
-    margin: 29px 29px 0 0;
+    width: 126px;
     display: flex;
     justify-content: space-between;
-    justify-self: end;
-    @media (max-width: 655px) {
-      &:first-child {
-        margin-left: 0;
-      }
-      justify-self: center;
-    }
-
-    a{
-      height: 30px;
-      display: flex;
-      align-items: center;
-    }
     img {
-      //width: 30px;
-      //height: 30px;
-      margin-left: 18px;
-      cursor: pointer;
-      &:hover {
-        opacity: 0.73;
-      }
+      width: 30px;
+      height: 30px;
     }
   }
 }
@@ -450,9 +295,8 @@ body {
     &__buy {
       text-align: right;
       align-content: end;
-      cursor: pointer;
-      &:hover{
-        color: #FFA542;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
