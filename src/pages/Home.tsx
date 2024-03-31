@@ -71,7 +71,7 @@ const headphones: ProductProps[] = [
     {
         id: 7,
         imgSrc: AppleAirPods,
-        title: "Apple AirPods.png",
+        title: "Apple AirPods",
         price: 2927,
         rate: 4.7,
         wireless: true,
@@ -96,31 +96,35 @@ const headphones: ProductProps[] = [
 
 export const Home: FC = () => {
     return (
-        <div className={styles.home}>
-            <h4 className={styles.home__headphones}>Наушники </h4>
-            <ul className={styles.home__productList}>
-                {headphones
-                    .filter((obj: ProductProps) => {
-                        return !obj.wireless;
-                    })
-                    .map((obj) => (
-                        <li key={obj.id}>
-                            <ProductBlock {...obj} />
-                        </li>
-                    ))}
-            </ul>
-            <h4 className={styles.home__headphones}>Беспроводные наушники </h4>
-            <ul className={styles.home__productList}>
-                {headphones
-                    .filter((obj: ProductProps) => {
-                        return obj.wireless;
-                    })
-                    .map((obj) => (
-                        <li key={obj.id}>
-                            <ProductBlock {...obj} />
-                        </li>
-                    ))}
-            </ul>
-        </div>
+        <>
+            <div className={styles.home}>
+                <h4 className={styles.home__headphones}>Наушники </h4>
+                <ul className={styles.home__productList}>
+                    {headphones
+                        .filter((obj: ProductProps) => {
+                            return !obj.wireless;
+                        })
+                        .map((obj) => (
+                            <li key={obj.id}>
+                                <ProductBlock {...obj} />
+                            </li>
+                        ))}
+                </ul>
+                <h4 className={styles.home__headphones}>
+                    Беспроводные наушники{" "}
+                </h4>
+                <ul className={styles.home__productList}>
+                    {headphones
+                        .filter((obj: ProductProps) => {
+                            return obj.wireless;
+                        })
+                        .map((obj) => (
+                            <li key={obj.id}>
+                                <ProductBlock {...obj} />
+                            </li>
+                        ))}
+                </ul>
+            </div>
+        </>
     );
 };

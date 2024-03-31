@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AppleBYZS852I from "../assets/AppleBYZS852I.png";
 
 export type CartItemProps = {
     id: number;
@@ -19,18 +18,7 @@ export interface CartSliceState {
 
 const initialState: CartSliceState = {
     totalPrice: 2927,
-    items: [
-        {
-            id: 1,
-            imgSrc: AppleBYZS852I,
-            title: "AppleAirPods",
-            price: 2927,
-            priceWithoutDiscount: 3527,
-            rate: 4.7,
-            wireless: false,
-            count: 1,
-        },
-    ],
+    items: [],
 };
 
 export const cartSlice = createSlice({
@@ -56,7 +44,14 @@ export const cartSlice = createSlice({
                 (item) => item.id === action.payload,
             );
             if (findItem) {
-                findItem.count--;
+                if (findItem.count === 1) {
+                    cartSlice.caseReducers.removeItem(state, action);
+                } else {
+                    findItem.count--;
+                }
+                state.totalPrice = state.items.reduce((sum, obj) => {
+                    return obj.price * obj.count + sum;
+                }, 0);
             }
         },
 
@@ -65,12 +60,8 @@ export const cartSlice = createSlice({
                 (item) => item.id !== action.payload,
             );
         },
-        clearItems: (state) => {
-            state.items = [];
-            state.totalPrice = 0;
-        },
     },
 });
 
-export const { addItem, removeItem, clearItems, minusItem } = cartSlice.actions;
+export const { addItem, removeItem, minusItem } = cartSlice.actions;
 export default cartSlice.reducer;
