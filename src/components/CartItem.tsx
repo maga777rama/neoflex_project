@@ -3,8 +3,8 @@ import plusIcon from "../assets/svg/plusIcon.svg";
 import minusIcon from "../assets/svg/minusIcon.svg";
 import deleteIcon from "../assets/svg/deleteIcon.svg";
 import styles from "../scss/styles.module.scss";
+import { addItem, minusItem, removeItem } from "../redux/cartClice.ts";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../redux/cartClice.ts";
 
 export type CartItemProps1 = {
     id: number;
@@ -21,7 +21,19 @@ export const CartItem: FC<CartItemProps1> = ({
     price,
     count,
 }) => {
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
+
+    const addProduct: () => void = () => {
+        const item: CartItemProps1 = {
+            id,
+            imgSrc,
+            title,
+            price,
+            count: 0,
+        };
+
+        dispatch(addItem(item));
+    };
 
     return (
         <div className={styles.cartItem}>
@@ -41,18 +53,24 @@ export const CartItem: FC<CartItemProps1> = ({
                     className={styles.button_minus}
                     src={minusIcon}
                     alt="minusIcon"
+                    onClick={() => {
+                        dispatch(minusItem(id));
+                    }}
                 />
                 <div className={styles.quantity}>{count}</div>
                 <img
                     className={styles.button_plus}
                     src={plusIcon}
                     alt="plusIcon"
+                    onClick={() => {
+                        addProduct();
+                    }}
                 />
             </div>
             <div
                 className={styles.cartItem__deleteIcon}
                 onClick={() => {
-                    dispath(removeItem(id));
+                    dispatch(removeItem(id));
                 }}
             >
                 <img src={deleteIcon} alt="deleteIcon" />

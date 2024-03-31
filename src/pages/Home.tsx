@@ -71,7 +71,7 @@ const headphones: ProductProps[] = [
     {
         id: 7,
         imgSrc: AppleAirPods,
-        title: "Apple AirPods.png",
+        title: "Apple AirPods",
         price: 2927,
         rate: 4.7,
         wireless: true,

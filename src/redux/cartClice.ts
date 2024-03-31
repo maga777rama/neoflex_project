@@ -56,7 +56,11 @@ export const cartSlice = createSlice({
                 (item) => item.id === action.payload,
             );
             if (findItem) {
-                findItem.count--;
+                if (findItem.count === 1) {
+                    cartSlice.caseReducers.removeItem(state, action);
+                } else {
+                    findItem.count--;
+                }
             }
         },
 
@@ -65,12 +69,12 @@ export const cartSlice = createSlice({
                 (item) => item.id !== action.payload,
             );
         },
-        clearItems: (state) => {
-            state.items = [];
-            state.totalPrice = 0;
-        },
+        // clearItems: (state) => {
+        //     state.items = [];
+        //     state.totalPrice = 0;
+        // },
     },
 });
 
-export const { addItem, removeItem, clearItems, minusItem } = cartSlice.actions;
+export const { addItem, removeItem, minusItem } = cartSlice.actions;
 export default cartSlice.reducer;
